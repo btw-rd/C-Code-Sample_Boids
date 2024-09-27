@@ -14,6 +14,8 @@ I judged my performance by the number of objects that could be included in the s
 
 This project is a proof of concept solely focused on performance. No method is included for rendering the simulation, and the values involved in are not verified to achieve convincing flocking visuals, but the types of calculations being run in each update are accurate and thus the performance should be representative of a properly-tuned simulation.
 
+I have left a number of unused and unnessecary files in my repositories as artifacts of my development process, as I believe the greatest value of code samples as a recruitment tool is as a window into the development and decision-making process.
+
 Both versions of the program require glm to build: https://glm.g-truc.net/
 
 ### Guide:
