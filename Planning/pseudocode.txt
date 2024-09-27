@@ -1,0 +1,71 @@
+Write a CPU implementation of an algorithm, then parallelize it using CPU threads or by implementing it using a compute shader on the GPU. e.g.  
+
+    Do an implementation of an AI behavior (like flocking) on the CPU (single threaded), multithreaded, and for a compute shader
+
+Boids
+---
+
+main:
+include boid class
+
+initialize array of boids
+
+run update across all boids
+copy current boids to old boids
+
+boid:
+holds all data and functions necessary to operate one boid
+
+
+
+Boids (struct ver)
+---
+
+struct boid
+
+update
+{
+    empty vector for updated boids
+    for all boids
+    {
+        float avg_heading
+        float avg_position
+        float neighborhood_count
+
+        for every other boid in old_boids {
+            dis = distance(boid)
+
+            if dis < range {
+                // Separation: modify heading by opposite vector of direction between boids scaled by distance and fsep
+                heading += -(boid.position - position) * fsep / dis 
+
+                // Alignment: gather headings for average
+                avg_heading += boid.heading
+
+                // Cohesion: gather positions for average
+                avg_position += boid.heading
+
+                neighborhood_count++
+            }
+        }
+
+        avg_heading = avg_heading/neighborhood_count
+        avg_position = avg_position/neighborhood_count
+
+        heading += avg_heading * falign
+        heading += (avg_position - position) * fcohesion
+
+        position += velocity * unit(heading)
+
+        make new boid with the updated heading and position modified by heading and velocity
+        push_back onto new_boids
+    }
+    return new_boids
+}
+
+main
+{
+    initialize vector of random boids
+    update all boids
+    copy new boids to boids
+}

@@ -1,0 +1,6 @@
+[submodule "BoidsCUDA"]
+	path = BoidsCUDA
+	url = https://github.com/btw-rd/BoidsCUDA.git
+[submodule "BoidsSingle"]
+	path = BoidsSingle
+	url = https://github.com/btw-rd/BoidsSingle.git

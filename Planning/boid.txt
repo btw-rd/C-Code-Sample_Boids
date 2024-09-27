@@ -1,0 +1,42 @@
+class Boid {
+    const fsep
+    const falign
+    const fcohesion
+    const range
+    const velocity
+
+    var vector position
+    var vector heading
+
+    void boid_update {
+        float avg_heading
+        float avg_position
+        float neighborhood_count
+
+        for every other boid in old_boids {
+            dis = distance(boid)
+
+            if dis < range {
+                // Separation: modify heading by opposite vector of direction between boids scaled by distance and fsep
+                heading += -(boid.position - position) * dis * fsep
+
+                // Alignment: gather headings for average
+                avg_heading += boid.heading
+
+                // Cohesion: gather positions for average
+                avg_position += boid.heading
+
+                neighborhood_count++
+            }
+        }
+
+        avg_heading = avg_heading/neighborhood_count
+        avg_position = avg_position/neighborhood_count
+
+        heading += avg_heading * falign
+        heading += (avg_position - position) * fcohesion
+
+        position += velocity * unit(heading)
+
+    }
+}

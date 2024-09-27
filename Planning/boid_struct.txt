@@ -1,0 +1,5 @@
+struct Boid
+{
+    array position
+    array heading
+}
